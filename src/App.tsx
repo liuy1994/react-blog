@@ -1,12 +1,12 @@
 import * as React from 'react'
-import './App.css'
-import Counter from './coms/Counter'
+import './App.less'
+import Layout from './layout/Layout'
 
 class App extends React.Component {
-  public render() {
+  render() {
     return (
       <div>
-        <Counter name={'counter233'} count={1} />
+        <Layout/>
       </div>
     )
   }
