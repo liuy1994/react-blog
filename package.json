@@ -47,6 +47,18 @@
         "functions": 100,
         "lines": 100,
         "statements": 100
+      },
+      "collectCoverageFrom": [
+        "src/**/*.{js,jsx}"
+      ],
+      "setupFiles": [
+        "<rootDir>/config/polyfills.js"
+      ],
+      "transformIgnorePatterns": [
+        "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+      ],
+      "moduleNameMapper": {
+        "^react-native$": "react-native-web"
       }
     }
   }
