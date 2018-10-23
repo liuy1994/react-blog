@@ -39,6 +39,15 @@
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "/*.spec.(ts|tsx|js)$"
+    "testRegex": "/*.spec.(ts|tsx|js)$",
+    "mapCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }
