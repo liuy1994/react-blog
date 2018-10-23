@@ -13,12 +13,12 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
     "importHelpers": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "watch": true,
+    "noImplicitAny": false,
     // "forin": true,
     // "arrow-parens": true,
     "allowSyntheticDefaultImports": true

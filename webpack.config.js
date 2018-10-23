@@ -1,5 +1,5 @@
 const path = require('path')
-const HtmlWebpacklPlugin = require('html-webpack-plugin')
+// const HtmlWebpacklPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -10,27 +10,27 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/,
+        use: ['ts-loader', "babel-loader"]
+      },
+      {
         test: /\.(js|jsx)$/,
         use: "babel-loader",
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        use: ['ts-loader', "babel-loader"]
-      },
-      {
         test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader']
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
-  plugins: [
-    new HtmlWebpacklPlugin({
-      template: './public/index.html'
-    })
-  ]
+  // plugins: [
+  //   new HtmlWebpacklPlugin({
+  //     template: './public/index.html'
+  //   })
+  // ]
 }
