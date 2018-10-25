@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Header from './Header'
 import Content from './Content'
 import Footer from './Footer'
-import './Layout.css'
+import './Layout.less'
 
 class Layout extends Component {
   render() {

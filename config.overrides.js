@@ -2,7 +2,7 @@
 
 module.exports = function override(config, env) {
      config = injectBabelPlugin(
-    ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }],
+    ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],
          config,
        );
   return config;
