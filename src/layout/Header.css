@@ -1,5 +1,6 @@
 .header{
-  height: 200px;
-  background: #c25f5f;
+  height: 40px;
+  background-color: #000;
   color: #fff;
+  width: 100%;
 }
