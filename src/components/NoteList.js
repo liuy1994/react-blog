@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from '../services/request'
+import NoteItem from './NoteItem'
 class NoteList extends Component {
   constructor() {
     super()
@@ -11,7 +12,7 @@ class NoteList extends Component {
     request.getNoteList().then(data => {
       this.setState({
         notelist: data.list.map(t => {
-          return <li key={t.id}>{t.name}</li>
+          return <NoteItem key={t.id} name={t.name} />
         })
       })
     })
