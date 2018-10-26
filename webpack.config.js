@@ -36,8 +36,8 @@ module.exports = {
     contentBase: path.resolve('./public'),
     proxy: {
       "/blog": {
-        target: "http://localhost:3000",
-        pathRewrite: { "^/blog": "" }
+        target: "http://localhost:8881",
+        pathRewrite: { "^/blog": "/" }
       }
     },
     historyApiFallback: true

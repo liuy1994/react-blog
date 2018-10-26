@@ -1,42 +1,28 @@
 import React, { Component } from 'react'
+import request from '../services/request'
 class NoteList extends Component {
   constructor() {
     super()
     this.state = {
-      notelist: [
-        {
-          id: 1,
-          name: 1111
-        },
-        {
-          id: 2,
-          name: 22222
-        }, {
-          id: 3,
-          name: 3333
-        }
-      ],
-      list: []
+      notelist: []
     }
   }
   getNoteList() {
-    console.log('getNoteList')
-  }
-  componentDidMount() {
-    // this.getNoteList().then(data => {
-    //   this.notelist = data.list.map(t => {
-    //     return <li key={t.id}>{t.name}</li>
-    //   })
-    // })
-    this.setState({
-      list: this.state.notelist.map(t => {
-        return <li key={t.id}>{t.name}</li>
+    request.getNoteList().then(data => {
+      this.setState({
+        notelist: data.list.map(t => {
+          return <li key={t.id}>{t.name}</li>
+        })
       })
     })
   }
+  componentDidMount() {
+    this.getNoteList()
+  }
   render() {
+    const { notelist } = this.state
     return (
-      <ul>{this.state.list}</ul>
+      <ul>{notelist}</ul>
     )
   }
 }
