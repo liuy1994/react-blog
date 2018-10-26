@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
@@ -31,16 +32,18 @@ module.exports = {
     inline: true,
     contentBase: path.resolve('./public'),
     proxy: {
-      "/api": {
+      "/blog": {
         target: "http://localhost:3000",
-        pathRewrite: { "^/api": "" }
+        pathRewrite: { "^/blog": "" }
       }
     },
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin() 
   ]
 }
