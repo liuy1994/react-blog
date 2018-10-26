@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    vendor: ['react'],
+    app: './src/index.js'
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve('./dist')
@@ -44,6 +47,6 @@ module.exports = {
       template: './public/index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin() 
+    new webpack.NamedModulesPlugin()
   ]
 }
