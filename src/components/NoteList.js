@@ -15,7 +15,7 @@ class NoteList extends Component {
     request.getNoteList().then((data) => {
       this.setState({
         notelist: data.list.map(t => {
-          return <NoteItem key={t.id} name={t.name} id={t.id} />
+          return <NoteItem key={t.id} name={t.name} id={t.id} getlist={this.getNoteList.bind(this)}/>
         })
       })
     })
@@ -26,7 +26,8 @@ class NoteList extends Component {
     })
   }
   addItem(name) {
-    request.addNoteItem(name).then(() => {
+    request.addNoteItem(name).then((data) => {
+      this.getNoteList()
       this.setState({
         visible: false
       })
