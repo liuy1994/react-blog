@@ -26,7 +26,7 @@ class NoteList extends Component {
     })
   }
   addItem(name) {
-    request.addNoteItem(name).then((data) => {
+    request.addNoteItem(name).then(() => {
       this.getNoteList()
       this.setState({
         visible: false
@@ -48,10 +48,7 @@ class NoteList extends Component {
   inputName() {
     setTimeout(() => {
       console.log(this.state)
-    }, 3000);
-    // this.props.form.setFieldsValue({
-    //   name: event.target.value
-    // })
+    }, 3000)
   }
   componentDidMount() {
     this.getNoteList()
