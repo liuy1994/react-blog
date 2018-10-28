@@ -12,10 +12,13 @@ export default {
   getNoteDetail() {
     return axios.post('note/detail')
   },
-  getItemList() {
-    return axios.post('item/list')
+  getContentList() {
+    return axios.post('content/list')
   },
-  getItemDetail() {
-    return axios.post('item/detail')
+  getContentDetail(id) {
+    return axios.post('content/detail', { id })
+  },
+  addContentItem({name, content, biref, note_id, publish}){
+    return axios.post('content/detail', {name, content, biref, note_id, publish})
   }
 }
