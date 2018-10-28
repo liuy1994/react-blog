@@ -18,7 +18,7 @@ export default {
   getContentDetail(id) {
     return axios.post('content/detail', { id })
   },
-  addContentItem({name, content, biref, note_id, publish}){
-    return axios.post('content/detail', {name, content, biref, note_id, publish})
+  addContentItem({name, content, brief, publish}){
+    return axios.post('content/add', {name, content, brief, publish})
   }
 }

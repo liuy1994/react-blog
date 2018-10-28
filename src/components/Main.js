@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Main.less'
 import request from '../services/request'
+import MainAdd from './MainAdd'
 class Main extends Component {
   constructor() {
     super()
@@ -11,7 +12,7 @@ class Main extends Component {
   }
   componentDidMount() {
     this.getList()
-    this.getDetail()
+    this.getDetail(1)
   }
   getList() {
     request.getContentList().then(data => {
@@ -37,6 +38,8 @@ class Main extends Component {
         <ul>{contentList}</ul>
         <h3>详情</h3>
         <div>{detail && detail.name}</div>
+        <h3>新增博文</h3>
+        <MainAdd getlist={this.getList.bind(this)}></MainAdd>
       </div>
     )
   }
