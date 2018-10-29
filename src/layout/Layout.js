@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Header from './Header'
 import Content from './Content'
+import NoLogin from './NoLogin'
 import Footer from './Footer'
 import './Layout.less'
 
@@ -9,7 +10,8 @@ class Layout extends Component {
     return (
       <div className="layout">
         <Header></Header>
-        <Content></Content>
+        {/* <Content></Content> */}
+        <NoLogin></NoLogin>
         <Footer></Footer>
       </div>
     )
