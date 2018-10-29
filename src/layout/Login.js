@@ -16,6 +16,7 @@ class AddForm extends Component {
     }
     addItem(name) {
         this.props.form.validateFields((err, values) => {
+            console.log(values)
             if (!err) {
                 request.addContentItem(values).then(() => {
                     this.props.getlist()
