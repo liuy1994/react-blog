@@ -67,7 +67,7 @@ class NoteList extends Component {
               {getFieldDecorator('name', {
                 initialValue: name,
                 rules: [{ required: true, message: 'Please input your note name!', }],
-              })(<Input placeholder="请输入笔记本名称" type="text"></Input> )}
+              })(<Input placeholder="请输入笔记本名称"></Input> )}
             </FormItem>
           </Form>
         </Modal>
