@@ -30,5 +30,9 @@ export default {
   signup({ name, password }){
     password = md5(password)
     return axios.post('user/signup', { name, password })
+  },
+  login({ name, password }) {
+    password = md5(password)
+    return axios.post('user/login', { name, password })
   }
 }

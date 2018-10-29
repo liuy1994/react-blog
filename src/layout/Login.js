@@ -1,61 +1,34 @@
 import React, { Component } from 'react'
 import request from '../services/request'
-import { Form, Input, Button, Switch } from 'antd'
+import { Form, Input, Button } from 'antd'
+import './login.less'
 const FormItem = Form.Item
-const TextArea = Input.TextArea
 
-class AddForm extends Component {
-    constructor() {
-        super()
-        this.state = {
-            name: '',
-            brief: '',
-            content: '',
-            publish: false
-        }
-    }
-    addItem(name) {
+class SignUp extends Component {
+    login() {
         this.props.form.validateFields((err, values) => {
-            console.log(values)
             if (!err) {
-                request.addContentItem(values).then(() => {
-                    this.props.getlist()
-                })
+                request.login(values)
             }
         })
     }
     render() {
         const { getFieldDecorator } = this.props.form
-        let { name, brief, content, publish} = this.state
         return (
-            <div>
+            <div className="login">
                 <Form>
-                    <FormItem label="名称">
+                    <FormItem label="用户名">
                         {getFieldDecorator('name', {
-                            initialValue: name,
-                            rules: [{ required: true, message: 'Please input your blog name!', }],
-                        })(<Input placeholder="请输入名称"></Input> )}
+                            rules: [{ required: true, message: 'Please input your name!', }],
+                        })(<Input placeholder="请输入用户名"></Input>)}
                     </FormItem>
-                    <FormItem label="简介">
-                        {getFieldDecorator('brief', {
-                            initialValue: brief,
-                            rules: [{ required: true, message: 'Please input your brief!', }],
-                        })(<Input placeholder="请输入简介"></Input> )}
-                    </FormItem>
-                    
-                    <FormItem label="正文">
-                        {getFieldDecorator('content', {
-                            initialValue: content,
-                            rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<TextArea placeholder="请输入正文" rows="10"></TextArea> )}
-                    </FormItem>
-                    <FormItem label="是否直接发布">
-                        {getFieldDecorator('publish', {
-                            initialValue: true
-                        })( <Switch defaultChecked />)}
+                    <FormItem label="密码">
+                        {getFieldDecorator('password', {
+                            rules: [{ required: true, message: 'Please input your password!', }],
+                        })(<Input placeholder="密码"></Input>)}
                     </FormItem>
                     <FormItem label="">
-                        <Button type="primary" onClick={this.addItem.bind(this)}>保存</Button>
+                        <Button type="primary" onClick={this.login.bind(this)}>登陆</Button>
                     </FormItem>
                 </Form>
             </div>
@@ -63,5 +36,5 @@ class AddForm extends Component {
     }
 }
 
-const MainAdd = Form.create()(AddForm)
-export default MainAdd
+const SignUpForm = Form.create()(SignUp)
+export default SignUpForm
