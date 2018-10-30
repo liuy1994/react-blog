@@ -10,7 +10,7 @@ class Layout extends Component {
     return (
       <div className="layout">
         <Header></Header>
-        {/* <Content></Content> */}
+        <Content></Content>
         <NoLogin></NoLogin>
         <Footer></Footer>
       </div>

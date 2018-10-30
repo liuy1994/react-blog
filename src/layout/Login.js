@@ -8,7 +8,9 @@ class SignUp extends Component {
     login() {
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                request.login(values)
+                request.login(values).then(data => {
+                    document.cookie = `max_blog=${data}`
+                })
             }
         })
     }
