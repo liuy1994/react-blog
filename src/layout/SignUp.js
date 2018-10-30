@@ -13,8 +13,8 @@ class SignUp extends Component {
         })
     }
     checkName(event) {
-        let name = event.target.value
-        request.checkName(name).then(data => {
+        let userName = event.target.value
+        request.checkName(userName).then(data => {
             console.log(data)
         })
     }
@@ -24,8 +24,8 @@ class SignUp extends Component {
             <div className="signup">
                 <Form>
                     <FormItem label="用户名">
-                        {getFieldDecorator('name', {
-                            rules: [{ required: true, message: 'Please input your name!', }],
+                        {getFieldDecorator('userName', {
+                            rules: [{ required: true, message: 'Please input your username!', }],
                         })(<Input placeholder="请输入用户名" onBlur={this.checkName.bind(this)}></Input> )}
                     </FormItem>
                     <FormItem label="密码">

@@ -20,9 +20,9 @@ class SignUp extends Component {
             <div className="login">
                 <Form>
                     <FormItem label="用户名">
-                        {getFieldDecorator('name', {
+                        {getFieldDecorator('userName', {
                             initialValue: '测试444444',
-                            rules: [{ required: true, message: 'Please input your name!', }],
+                            rules: [{ required: true, message: 'Please input your username!', }],
                         })(<Input placeholder="请输入用户名"></Input>)}
                     </FormItem>
                     <FormItem label="密码">

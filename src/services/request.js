@@ -15,24 +15,24 @@ export default {
   },
 
   getContentList() {
-    return axios.post('content/list')
+    return axios.post('content/list', { noteId: 14})
   },
   getContentDetail(id) {
     return axios.post('content/detail', { id })
   },
-  addContentItem({name, content, brief, publish}){
-    return axios.post('content/add', {name, content, brief, publish})
+  addContentItem({ name, content, brief, publish}){
+    return axios.post('content/add', { name, content, brief, publish, noteId: 14})
   },
 
-  checkName(name) {
-    return axios.post('user/checkExit', { name })
+  checkName(userName) {
+    return axios.post('user/checkExit', { userName })
   },
-  signup({ name, password }){
+  signup({ userName, password }){
     password = md5(password)
-    return axios.post('user/signup', { name, password })
+    return axios.post('user/signup', { userName, password })
   },
-  login({ name, password }) {
+  login({ userName, password }) {
     password = md5(password)
-    return axios.post('user/login', { name, password })
+    return axios.post('user/login', { userName, password })
   }
 }
