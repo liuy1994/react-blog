@@ -12,8 +12,8 @@ class NoLogin extends Component {
     return (
       <div className="noLogin">
         <Switch>
-          <Route exact path='/sign/up' component={SignUp}></Route>
-          <Route exact path='/sign/in' component={Login}></Route>
+          <Route path='/sign/up' component={SignUp}></Route>
+          <Route path='/sign/in' component={Login}></Route>
         </Switch>
         <SignUp></SignUp>
         <Login></Login>
