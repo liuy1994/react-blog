@@ -48,9 +48,7 @@ module.exports = {
       inject: true,
       template: './public/index.html'
     }),
-    // new InterpolateHtmlPlugin({
-    //   PUBLIC_URL: './'
-    // }),
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, '../'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ]

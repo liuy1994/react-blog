@@ -1,4 +1,4 @@
-'use strict';
+
 
 const path = require('path');
 const webpack = require('webpack');
@@ -164,6 +164,10 @@ module.exports = {
   module: {
     strictExportPresence: true,
     rules: [
+      {
+        test: /.less$/,
+        loaders: ['style-loader', 'css-loader', 'less-loader']
+      },
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
 
