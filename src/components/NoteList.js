@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import request from '../services/request'
-import NoteItem from './NoteItem'
-import { Form, Input, Button, Modal } from 'antd'
+import './NoteList.less'
+import { Form, Input, Button, Modal, List, Icon } from 'antd'
 const FormItem = Form.Item
+const ListItem = List.Item
 class NoteList extends Component {
   constructor() {
     super()
@@ -13,10 +14,9 @@ class NoteList extends Component {
   }
   getNoteList() {
     request.getNoteList().then((data) => {
+      console.log(data.list)
       this.setState({
-        notelist: data.list.map(t => {
-          return <NoteItem key={t.id} name={t.name} id={t.id} getlist={this.getNoteList.bind(this)}/>
-        })
+        notelist: data.list
       })
     })
   }
@@ -50,6 +50,19 @@ class NoteList extends Component {
       console.log(this.state)
     }, 3000)
   }
+  deleteItem() {
+    console.log(this.props.id)
+    request.deleteNoteItem(this.props.id).then(() => {
+      this.props.getlist()
+    })
+  }
+  confirmDetele() {
+    Modal.confirm({
+      title: '提示',
+      content: '确认删除?',
+      onOk: this.deleteItem.bind(this)
+    })
+  }
   componentDidMount() {
     this.getNoteList()
   }
@@ -57,10 +70,23 @@ class NoteList extends Component {
     const { getFieldDecorator } = this.props.form
     const { notelist, name, visible } = this.state
     return (
-      <div>
-        <p>笔记本列表</p>
-        <Button type="primary" onClick={this.showAddNoteModal.bind(this)}>新增笔记本</Button>
-        <ul>{notelist}</ul>
+      <div className="note-list">
+        <h3>
+          <span>笔记本列表</span>
+          <Icon type="plus-circle" theme="outlined" onClick={this.showAddNoteModal.bind(this)}/>
+        </h3>
+        <List
+          size="small"
+          bordered
+          dataSource={notelist}
+          renderItem={item => (
+          <ListItem>
+            <span>{item.name}</span>
+            <Icon onClick={this.confirmDetele.bind(this)} type="delete" theme="outlined" />
+            </ListItem>
+            )
+          }
+        />
         <Modal visible={visible} title="新增笔记本" onOk={this.confirmAdd.bind(this)} onCancel={this.cancelAdd.bind(this)}>
           <Form>
             <FormItem label="名称">

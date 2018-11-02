@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './ContentList.less'
 import request from '../services/request'
+import { List, Button } from 'antd'
+import { Link } from 'react-router-dom'
 class ContentList extends Component {
   constructor() {
     super()
@@ -14,9 +16,7 @@ class ContentList extends Component {
   getList() {
     request.getContentList().then(data => {
       this.setState({
-        contentList: data.list.map(t => {
-          return <li key={t.id}>{t.name}</li>
-        })
+        contentList: data.list
       })
     })
   }
@@ -24,8 +24,21 @@ class ContentList extends Component {
     let { contentList } = this.state
     return (
       <div className="content-list">
-        <h3>文章列表</h3>
-        <ul>{contentList}</ul>
+        <h3><Link to="add"><Button size="small" type="primary">新增文章</Button></Link></h3>
+        <List
+          bordered={true}
+          dataSource={contentList}
+          renderItem={item => (
+            <List.Item key={item.id}>
+              <List.Item.Meta
+                title={<Link to={`detail/${item.id}`}>{item.name}</Link>}
+                description={item.brief}
+              />
+              <Link to={`edit/${item.id}`}><Button type="primary">编辑</Button></Link>
+              <Button type="danger">删除</Button>
+            </List.Item>
+          )}
+        ></List>
       </div>
     )
   }

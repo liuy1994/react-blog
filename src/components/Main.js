@@ -12,10 +12,10 @@ class Main extends Component {
     const { routePath } = this.props
     return (
       <div className="content-main">
-        <Link to="/">list&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+        {/* <Link to="/">list&nbsp;&nbsp;&nbsp;&nbsp;</Link>
         <Link to="/add">add&nbsp;&nbsp;&nbsp;&nbsp;</Link>
         <Link to="/edit/344">edit&nbsp;&nbsp;&nbsp;&nbsp;</Link>
-        <Link to="/detail">detail&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+        <Link to="/detail">detail&nbsp;&nbsp;&nbsp;&nbsp;</Link> */}
         <Switch>
           <Route exact path={`${routePath.path}`} component={ContentList}></Route>
           <Route path={`${routePath.path}add`} component={ContentEdit}></Route>
