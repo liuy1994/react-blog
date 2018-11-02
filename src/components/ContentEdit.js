@@ -61,7 +61,7 @@ class AddForm extends Component {
                         })( <Switch defaultChecked />)}
                     </FormItem>
                     <FormItem label="">
-                        <Link to='/'><Button className="back-button">返回</Button></Link>
+                        <Link to='/list'><Button className="back-button">返回</Button></Link>
                         <Button type="primary" onClick={this.addItem.bind(this)}>保存</Button>
                     </FormItem>
                 </Form>

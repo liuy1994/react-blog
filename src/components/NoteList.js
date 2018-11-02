@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import request from '../services/request'
 import './NoteList.less'
-import { Form, Input, Button, Modal, List, Icon } from 'antd'
+import { Form, Input, Modal, List, Icon } from 'antd'
+import { Link } from 'react-router-dom'
 const FormItem = Form.Item
 const ListItem = List.Item
 class NoteList extends Component {
@@ -81,7 +82,7 @@ class NoteList extends Component {
           dataSource={notelist}
           renderItem={item => (
           <ListItem>
-            <span>{item.name}</span>
+              <span><Link to={`/list/${item.id}`}>{item.name}</Link></span>
             <Icon onClick={this.confirmDetele.bind(this)} type="delete" theme="outlined" />
             </ListItem>
             )

@@ -3,7 +3,7 @@ import './Main.less'
 import ContentEdit from './ContentEdit'
 import ContentList from './ContentList'
 import ContentItem from './ContentItem'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 class Main extends Component {
   showContentList() {
     console.log('add success')
@@ -17,7 +17,8 @@ class Main extends Component {
         <Link to="/edit/344">edit&nbsp;&nbsp;&nbsp;&nbsp;</Link>
         <Link to="/detail">detail&nbsp;&nbsp;&nbsp;&nbsp;</Link> */}
         <Switch>
-          <Route exact path={`${routePath.path}`} component={ContentList}></Route>
+          <Redirect exact path="/" to={{ pathname: '/list' }} />
+          <Route path={`${routePath.path}list/:id?`} component={ContentList}></Route>
           <Route path={`${routePath.path}add`} component={ContentEdit}></Route>
           <Route path={`${routePath.path}edit/:id`} component={ContentEdit}></Route>
           <Route path={`${routePath.path}detail`} component={ContentItem}></Route>

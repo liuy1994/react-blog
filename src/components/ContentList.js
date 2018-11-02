@@ -14,7 +14,9 @@ class ContentList extends Component {
     this.getList()
   }
   getList() {
-    request.getContentList().then(data => {
+    console.log(this.props.params)
+    let noteId
+    request.getContentList(noteId).then(data => {
       this.setState({
         contentList: data.list
       })
@@ -24,7 +26,7 @@ class ContentList extends Component {
     let { contentList } = this.state
     return (
       <div className="content-list">
-        <h3><Link to="add"><Button size="small" type="primary">新增文章</Button></Link></h3>
+        <h3><Link to="/add"><Button size="small" type="primary">新增文章</Button></Link></h3>
         <List
           bordered={true}
           dataSource={contentList}
@@ -34,7 +36,7 @@ class ContentList extends Component {
                 title={<Link to={`detail/${item.id}`}>{item.name}</Link>}
                 description={item.brief}
               />
-              <Link to={`edit/${item.id}`}><Button type="primary">编辑</Button></Link>
+              <Link to={`/edit/${item.id}`}><Button type="primary">编辑</Button></Link>
               <Button type="danger">删除</Button>
             </List.Item>
           )}
