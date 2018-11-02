@@ -6,10 +6,11 @@ import About from '../components/About'
 
 class Content extends Component {
   render() {
+    const {match} = this.props
     return (
       <div className="content">
         <Side></Side>
-        <Main></Main>
+        <Main routePath={match}></Main>
         <About></About>
       </div>
     )

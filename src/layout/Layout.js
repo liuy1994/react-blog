@@ -14,7 +14,7 @@ class Layout extends Component {
       <div className="layout">
         <Header></Header>
         <Switch>
-          <Route exact path='/' component={Content}></Route>
+          <Route exact path='' component={Content}></Route>
           <Route path='/sign' component={NoLogin}></Route>
           <Route path='*' component={NotFound}></Route>
         </Switch>

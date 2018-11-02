@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
-import './MainAdd.less'
+import './ContentEdit.less'
 const FormItem = Form.Item
 const TextArea = Input.TextArea
 
@@ -12,14 +12,14 @@ class AddForm extends Component {
             name: '',
             brief: '',
             content: '',
-            publish: false
+            publish: true
         }
     }
     addItem(name) {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 request.addContentItem(values).then(() => {
-                    this.props.getlist()
+                    this.props.showContentList()
                 })
             }
         })
@@ -28,11 +28,13 @@ class AddForm extends Component {
         const { getFieldDecorator } = this.props.form
         const formItemLayout = {
             labelCol: { span: 4 },
-            wrapperCol: { span: 4 },
+            wrapperCol: { span: 20, align: "left" },
         }
         let { name, brief, content, publish} = this.state
+        const { match } = this.props
         return (
-            <div class="content-add-form">
+            <div className="content-edit-form">
+                <h3>{match.params.id ? '编辑' : '新增'}博文</h3>
                 <Form layout="vertical">
                     <FormItem label="名称">
                         {getFieldDecorator('name', {
@@ -52,9 +54,9 @@ class AddForm extends Component {
                             rules: [{ required: true, message: 'Please input your content!', }],
                         })(<TextArea placeholder="请输入正文" rows="10"></TextArea> )}
                     </FormItem>
-                    <FormItem label="是否直接发布" {...formItemLayout}>
+                    <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {
-                            initialValue: true
+                            initialValue: publish
                         })( <Switch defaultChecked />)}
                     </FormItem>
                     <FormItem label="">
