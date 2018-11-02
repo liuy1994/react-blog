@@ -14,8 +14,8 @@ export default {
     return axios.post('note/detail')
   },
 
-  getContentList() {
-    return axios.post('content/list', { noteId: 14})
+  getContentList(noteId) {
+    return axios.post('content/list', { noteId})
   },
   getContentDetail(id) {
     return axios.post('content/detail', { id })

@@ -3,7 +3,6 @@ import request from '../services/request';
 import { Button, Modal } from 'antd'
 class NoteItem extends Component {
   deleteItem() {
-    console.log(this.props.id)
     request.deleteNoteItem(this.props.id).then(() => {
       this.props.getlist()
     })

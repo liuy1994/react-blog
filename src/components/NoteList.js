@@ -15,7 +15,6 @@ class NoteList extends Component {
   }
   getNoteList() {
     request.getNoteList().then((data) => {
-      console.log(data.list)
       this.setState({
         notelist: data.list
       })
@@ -52,7 +51,6 @@ class NoteList extends Component {
     }, 3000)
   }
   deleteItem() {
-    console.log(this.props.id)
     request.deleteNoteItem(this.props.id).then(() => {
       this.props.getlist()
     })

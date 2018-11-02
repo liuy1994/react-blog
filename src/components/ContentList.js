@@ -10,13 +10,16 @@ class ContentList extends Component {
       contentList: []
     }
   }
-  componentDidMount() {
-    this.getList()
+  
+  componentWillReceiveProps(nextProps) {
+    this.getList(nextProps.match.params)
   }
-  getList() {
-    console.log(this.props.params)
-    let noteId
-    request.getContentList(noteId).then(data => {
+  
+  componentDidMount() {
+    this.getList(this.props.match.params)
+  }
+  getList(params) {
+    request.getContentList(params.id).then(data => {
       this.setState({
         contentList: data.list
       })
