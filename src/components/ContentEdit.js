@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import request from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
 import './ContentEdit.less'
+import ContentInput from './ContentInput'
+import { Link } from 'react-router-dom'
 const FormItem = Form.Item
-const TextArea = Input.TextArea
 
 class AddForm extends Component {
     constructor() {
@@ -15,7 +16,7 @@ class AddForm extends Component {
             publish: true
         }
     }
-    addItem(name) {
+    addItem() {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 request.addContentItem(values).then(() => {
@@ -52,7 +53,7 @@ class AddForm extends Component {
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<TextArea placeholder="请输入正文" rows="10"></TextArea> )}
+                        })(<ContentInput />)}
                     </FormItem>
                     <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {
@@ -60,6 +61,7 @@ class AddForm extends Component {
                         })( <Switch defaultChecked />)}
                     </FormItem>
                     <FormItem label="">
+                        <Link to='/'><Button className="back-button">返回</Button></Link>
                         <Button type="primary" onClick={this.addItem.bind(this)}>保存</Button>
                     </FormItem>
                 </Form>
