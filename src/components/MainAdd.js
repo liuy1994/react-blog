@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import request from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
+import './MainAdd.less'
 const FormItem = Form.Item
 const TextArea = Input.TextArea
 
@@ -25,10 +26,14 @@ class AddForm extends Component {
     }
     render() {
         const { getFieldDecorator } = this.props.form
+        const formItemLayout = {
+            labelCol: { span: 4 },
+            wrapperCol: { span: 4 },
+        }
         let { name, brief, content, publish} = this.state
         return (
-            <div>
-                <Form>
+            <div class="content-add-form">
+                <Form layout="vertical">
                     <FormItem label="名称">
                         {getFieldDecorator('name', {
                             initialValue: name,
@@ -41,14 +46,13 @@ class AddForm extends Component {
                             rules: [{ required: true, message: 'Please input your brief!', }],
                         })(<Input placeholder="请输入简介"></Input> )}
                     </FormItem>
-                    
                     <FormItem label="正文">
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
                         })(<TextArea placeholder="请输入正文" rows="10"></TextArea> )}
                     </FormItem>
-                    <FormItem label="是否直接发布">
+                    <FormItem label="是否直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {
                             initialValue: true
                         })( <Switch defaultChecked />)}
