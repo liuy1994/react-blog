@@ -6,7 +6,7 @@ import Footer from './Footer'
 import NotFound from './NotFound'
 
 import './Layout.less'
-import { Switch, Route, Link} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 class Layout extends Component {
   render() {
