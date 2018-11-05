@@ -34,5 +34,8 @@ export default {
   login({ userName, password }) {
     password = md5(password)
     return axios.post('user/login', { userName, password })
+  },
+  logout() {
+    return axios.post('user/logout')
   }
 }
