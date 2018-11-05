@@ -4,6 +4,7 @@ import { Form, Input, Button, Switch } from 'antd'
 import './ContentEdit.less'
 import ContentInput from './ContentInput'
 import { Link } from 'react-router-dom'
+import {connect} from 'react-redux'
 const FormItem = Form.Item
 
 class AddForm extends Component {
@@ -71,4 +72,9 @@ class AddForm extends Component {
 }
 
 const MainAdd = Form.create()(AddForm)
-export default MainAdd
+const mapStateToProps = (state) => {
+  return {
+    selectedNoteId: state.selectedNoteId
+  }
+}
+export default connect(mapStateToProps)(MainAdd)

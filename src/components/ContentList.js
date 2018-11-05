@@ -3,8 +3,8 @@ import './ContentList.less'
 import request from '../services/request'
 import { List, Button } from 'antd'
 import { Link } from 'react-router-dom'
-import store from '../redux/store'
 import {connect} from 'react-redux'
+
 class ContentList extends Component {
   constructor() {
     super()
