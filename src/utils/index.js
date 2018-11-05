@@ -1,7 +1,5 @@
-import docCookies from './docCookies'
-import axios from './axios'
+import cookies from './docCookies.js'
+import axiosInstance from './axios'
 
-module.export = {
-  axios,
-  docCookies
-}
+export const axios = axiosInstance
+export const docCookies = cookies 

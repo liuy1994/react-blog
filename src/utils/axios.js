@@ -23,8 +23,9 @@ axiosInstance.interceptors.response.use(
       res = response.data
     }
     // 根据返回的code值来做不同的处理（和后端约定）
-    if (res.code === '401') {
+    if (['401', '601'].includes(res.code)) {
       window.location.href = '#/sign/in'
+      return Promise.reject(res)
     }
     return res.data
   },

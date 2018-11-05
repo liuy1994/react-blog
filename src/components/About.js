@@ -7,6 +7,7 @@ class Main extends Component {
   logout() {
     request.logout().then(() => {
       docCookies.removeItem('max_blog')
+      window.location.reload()
     })
   }
   render() {

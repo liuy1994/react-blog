@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from '../services/request'
 import { Form, Input, Button } from 'antd'
-import docCookies from '../utils'
+import {docCookies} from '../utils'
 import './login.less'
 const FormItem = Form.Item
 
@@ -11,6 +11,7 @@ class SignUp extends Component {
             if (!err) {
                 request.login(values).then(data => {
                     // document.cookie = `max_blog=${data}`
+                    console.log(data)
                     docCookies.setItem('max_blog', data)
                 })
             }
