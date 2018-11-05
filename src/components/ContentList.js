@@ -3,6 +3,8 @@ import './ContentList.less'
 import request from '../services/request'
 import { List, Button } from 'antd'
 import { Link } from 'react-router-dom'
+import store from '../redux/store'
+import {connect} from 'react-redux'
 class ContentList extends Component {
   constructor() {
     super()
@@ -10,20 +12,20 @@ class ContentList extends Component {
       contentList: []
     }
   }
-  
   componentWillReceiveProps(nextProps) {
-    this.getList(nextProps.match.params)
+    this.getList(nextProps.selectedNoteId)
   }
-  
   componentDidMount() {
     this.getList(this.props.match.params)
   }
-  getList(params) {
-    request.getContentList(params.id).then(data => {
-      this.setState({
-        contentList: data.list
+  getList(noteId) {
+    if (noteId) {
+      request.getContentList(noteId).then(data => {
+        this.setState({
+          contentList: data.list
+        })
       })
-    })
+    }
   }
   render() {
     let { contentList } = this.state
@@ -48,4 +50,9 @@ class ContentList extends Component {
     )
   }
 }
-export default ContentList
+const mapStateToProps = (state) => {
+  return {
+    selectedNoteId: state.selectedNoteId
+  }
+}
+export default connect(mapStateToProps)(ContentList)

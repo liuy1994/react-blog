@@ -18,7 +18,7 @@ class Main extends Component {
         <Link to="/detail">detail&nbsp;&nbsp;&nbsp;&nbsp;</Link> */}
         <Switch>
           <Redirect exact path="/" to={{ pathname: '/list' }} />
-          <Route path={`${routePath.path}list/:id?`} component={ContentList}></Route>
+          <Route path={`${routePath.path}list`} component={ContentList}></Route>
           <Route path={`${routePath.path}add`} component={ContentEdit}></Route>
           <Route path={`${routePath.path}edit/:id`} component={ContentEdit}></Route>
           <Route path={`${routePath.path}detail`} component={ContentItem}></Route>

@@ -1,9 +1,14 @@
-const reducer = (state = 0, action) => {
+const defaultState = {
+  selectedNoteId: null
+}
+const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'INCREMENT': return state + 1
-    case 'DECREMENT': return state - 1
-    case 'SELECT_NOTE': return '23333'
-    default: return state
+    case 'SELECT_NOTE': 
+      return Object.assign({}, state, {
+        selectedNoteId: action.id
+      })
+    default:
+      return state
   }
 }
 export default reducer

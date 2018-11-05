@@ -3,6 +3,7 @@ import request from '../services/request'
 import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
 import { Link } from 'react-router-dom'
+import store from '../redux/store'
 const FormItem = Form.Item
 const ListItem = List.Item
 class NoteList extends Component {
@@ -18,6 +19,7 @@ class NoteList extends Component {
       this.setState({
         notelist: data.list
       })
+      if (data.list.length) this.selectNote(data.list[0].id)
     })
   }
   showAddNoteModal() {
@@ -62,6 +64,12 @@ class NoteList extends Component {
       onOk: this.deleteItem.bind(this)
     })
   }
+  selectNote(id) {
+    store.dispatch({
+      type: 'SELECT_NOTE',
+      id
+    })
+  }
   componentDidMount() {
     this.getNoteList()
   }
@@ -80,7 +88,7 @@ class NoteList extends Component {
           dataSource={notelist}
           renderItem={item => (
           <ListItem>
-              <span><Link to={`/list/${item.id}`}>{item.name}</Link></span>
+              <span onClick={this.selectNote.bind(this, item.id)}>{item.name}</span>
             <Icon onClick={this.confirmDetele.bind(this)} type="delete" theme="outlined" />
             </ListItem>
             )
