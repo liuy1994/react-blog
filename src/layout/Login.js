@@ -10,9 +10,8 @@ class SignUp extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 request.login(values).then(data => {
-                    // document.cookie = `max_blog=${data}`
-                    console.log(data)
                     docCookies.setItem('max_blog', data)
+                    window.location.href = '#/list'
                 })
             }
         })
