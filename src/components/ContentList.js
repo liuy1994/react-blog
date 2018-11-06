@@ -20,7 +20,6 @@ class ContentList extends Component {
   }
   getList(noteId) {
     if (noteId) {
-      console.log(noteId)
       request.getContentList(noteId).then(data => {
         this.setState({
           contentList: data.list

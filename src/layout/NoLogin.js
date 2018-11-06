@@ -8,7 +8,6 @@ class NoLogin extends Component {
   
   render() {
     const { match } = this.props
-    console.log(match)
     return (
       <div className="noLogin">
         <Switch>

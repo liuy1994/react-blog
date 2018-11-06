@@ -8,7 +8,6 @@ import store from './redux/store'
 import {Provider} from 'react-redux'
 
 const render = () => {
-  console.log(new Date())
   ReactDOM.render((
     <Provider store={store}>
       <HashRouter>
