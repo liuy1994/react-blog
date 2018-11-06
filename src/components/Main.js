@@ -21,7 +21,7 @@ class Main extends Component {
           <Route path={`${routePath.path}list`} component={ContentList}></Route>
           <Route path={`${routePath.path}add`} component={ContentEdit}></Route>
           <Route path={`${routePath.path}edit/:id`} component={ContentEdit}></Route>
-          <Route path={`${routePath.path}detail`} component={ContentItem}></Route>
+          <Route path={`${routePath.path}detail/:id`} component={ContentItem}></Route>
         </Switch>
       </div>
     )

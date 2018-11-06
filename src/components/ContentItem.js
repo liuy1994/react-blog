@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './ContentItem.less'
 import request from '../services/request'
+import { Spin } from 'antd';
 class ContentItem extends Component {
   constructor() {
     super()
@@ -9,7 +10,8 @@ class ContentItem extends Component {
     }
   }
   componentDidMount() {
-    this.getDetail(1)
+    let {id} = this.props.match.params
+    this.getDetail(id)
   }
   getDetail(id) {
     request.getContentDetail(id).then(data => {
@@ -22,8 +24,18 @@ class ContentItem extends Component {
     let { detail } = this.state
     return (
       <div className="content-main">
-        <h3>详情</h3>
-        <div>{detail && detail.name}</div>
+      {
+          detail ? 
+            <div>
+              <h1>{detail.name}</h1>
+              <h2>{detail.brief}</h2>
+              <div className="item-content" dangerouslySetInnerHTML={{
+                __html: detail.content
+              }} />
+            </div> : 
+            <Spin tip="Loading..." />
+      }
+        
       </div>
     )
   }
