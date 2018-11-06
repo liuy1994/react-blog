@@ -17,12 +17,13 @@ class ContentInput extends Component{
     this.setState({ text: value })
   }
   render() {
+    let { onInput, content } = this.props
     return (
       <ReactQuill
-        value={this.state.text}
+        value={content}
         height="300"
         placeholder='Compose an epic...'
-        onChange={this.handleChange.bind(this)} />
+        onChange={onInput} />
     )
   }
 }

@@ -4,6 +4,7 @@ import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
 import { Link } from 'react-router-dom'
 import store from '../redux/store'
+import { connect } from 'react-redux'
 const FormItem = Form.Item
 const ListItem = List.Item
 class NoteList extends Component {
@@ -19,7 +20,6 @@ class NoteList extends Component {
       this.setState({
         notelist: data.list
       })
-      if (data.list.length) this.selectNote(data.list[0].id)
     })
   }
   showAddNoteModal() {
@@ -69,6 +69,9 @@ class NoteList extends Component {
       type: 'SELECT_NOTE',
       id
     })
+    if (!/list/.test(window.location.hash)){
+      window.location.href = '/#/list'
+    }
   }
   componentDidMount() {
     this.getNoteList()
@@ -109,4 +112,9 @@ class NoteList extends Component {
   }
 }
 const WrappedNoteList = Form.create()(NoteList)
-export default WrappedNoteList
+const mapStateToProps = (state) => {
+  return {
+    selectedNoteId: state.selectedNoteId
+  }
+}
+export default connect(mapStateToProps)(WrappedNoteList)

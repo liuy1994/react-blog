@@ -20,8 +20,8 @@ export default {
   getContentDetail(id) {
     return axios.post('content/detail', { id })
   },
-  addContentItem({ name, content, brief, publish}){
-    return axios.post('content/add', { name, content, brief, publish, noteId: 14})
+  saveContentItem({ name, content, brief, publish, id, noteId}){
+    return axios.post('content/save', { name, content, brief, publish, id, noteId})
   },
 
   checkName(userName) {

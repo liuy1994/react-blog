@@ -14,25 +14,46 @@ class AddForm extends Component {
             name: '',
             brief: '',
             content: '',
-            publish: true
+            id: ''
         }
     }
-    addItem() {
+    saveItem() {
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                request.addContentItem(values).then(() => {
-                    this.props.showContentList()
+                request.saveContentItem({ ...values, id: this.state.id, noteId: this.props.selectedNoteId}).then(() => {
+                    window.location.href = '/#/list'
                 })
             }
         })
     }
+    getDetail(){
+        let { id } = this.props.match.params
+        request.getContentDetail(id).then(data => {
+            console.log(data)
+            this.setState({
+                name: data.name,
+                brief: data.brief,
+                content: data.content,
+                id: data.id
+            })
+        })
+    }
+    inputContent(content) {
+        this.setState({
+            content
+        })
+    }
+    componentWillMount() {
+        if(this.props.match.path !== '/add') this.getDetail()
+    }
+    
     render() {
         const { getFieldDecorator } = this.props.form
         const formItemLayout = {
             labelCol: { span: 4 },
             wrapperCol: { span: 20, align: "left" },
         }
-        let { name, brief, content, publish} = this.state
+        let { name, brief, content} = this.state
         const { match } = this.props
         return (
             <div className="content-edit-form">
@@ -54,16 +75,16 @@ class AddForm extends Component {
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<ContentInput />)}
+                        })(<ContentInput noteId={this.props.selectedNoteId} content={content} onInput={this.inputContent.bind(this)}/>)}
                     </FormItem>
                     <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {
-                            initialValue: publish
+                            initialValue: true
                         })( <Switch defaultChecked />)}
                     </FormItem>
                     <FormItem label="">
                         <Link to='/list'><Button className="back-button">返回</Button></Link>
-                        <Button type="primary" onClick={this.addItem.bind(this)}>保存</Button>
+                        <Button type="primary" onClick={this.saveItem.bind(this)}>保存</Button>
                     </FormItem>
                 </Form>
             </div>
