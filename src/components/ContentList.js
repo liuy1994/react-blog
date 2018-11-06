@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './ContentList.less'
 import request from '../services/request'
-import { List, Button, Modal } from 'antd'
+import { List, Icon, Upload, Button, Modal, message } from 'antd'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -41,7 +41,33 @@ class ContentList extends Component {
       this.getList(this.props.selectedNoteId)
     })
   }
+  test(){
+    request.getPolicy().then(data => {
+      console.log(data)
+    })
+  }
   render() {
+    const props = {
+      name: 'file',
+      action: '//jsonplaceholder.typicode.com/posts/',
+      headers: {
+        authorization: 'authorization-text',
+      },
+      onChange(info) {
+        if (info.file.status !== 'uploading') {
+          console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+          message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+          message.error(`${info.file.name} file upload failed.`);
+        }
+      },
+      beforeUpload(file){
+        console.log(file)
+        return false
+      }
+    }
     let { contentList } = this.state
     let noteId = this.props.selectedNoteId
     if(noteId) {
@@ -66,7 +92,15 @@ class ContentList extends Component {
       )
     } else {
       return (
-        <h1>Welcome, 请先选择一个笔记本</h1>
+        <div>
+          <h1>Welcome, 请先选择一个笔记本</h1>
+          <Upload {...props}>
+            <Button>
+              <Icon type="upload" /> Click to Upload
+            </Button>
+          </Upload>
+          <Button type="danger" onClick={this.test.bind(this)}>test</Button>
+        </div>  
       )
     }
   }

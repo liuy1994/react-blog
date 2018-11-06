@@ -40,5 +40,9 @@ export default {
   },
   logout() {
     return axios.post('user/logout')
+  },
+
+  getPolicy() {
+    return axios.post('file/getPolicy')
   }
 }
