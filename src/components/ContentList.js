@@ -64,7 +64,7 @@ class ContentList extends Component {
         }
       },
       beforeUpload(file){
-        console.log(file)
+        request.upload(file)
         return false
       }
     }
@@ -99,7 +99,6 @@ class ContentList extends Component {
               <Icon type="upload" /> Click to Upload
             </Button>
           </Upload>
-          <Button type="danger" onClick={this.test.bind(this)}>test</Button>
         </div>  
       )
     }

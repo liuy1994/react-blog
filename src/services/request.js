@@ -1,5 +1,6 @@
 import axios from '../utils/axios'
 import md5 from 'md5'
+import upload from './upload'
 export default {
   getNoteList() {
     return axios.post('note/list')
@@ -42,7 +43,7 @@ export default {
     return axios.post('user/logout')
   },
 
-  getPolicy() {
-    return axios.post('file/getPolicy')
+  upload(file) {
+    return upload(file)
   }
 }
