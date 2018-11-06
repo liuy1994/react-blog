@@ -23,6 +23,9 @@ export default {
   saveContentItem({ name, content, brief, publish, id, noteId}){
     return axios.post('content/save', { name, content, brief, publish, id, noteId})
   },
+  deleteContentItem(id) {
+    return axios.post('content/delete', {id})
+  },
 
   checkName(userName) {
     return axios.post('user/checkExit', { userName })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './ContentList.less'
 import request from '../services/request'
-import { List, Button } from 'antd'
+import { List, Button, Modal } from 'antd'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -27,6 +27,20 @@ class ContentList extends Component {
       })
     }
   }
+  showDeleteItem(id) {
+    Modal.confirm({
+      title: 'Confirm',
+      content: '删除这篇文章？',
+      okText: '确认',
+      cancelText: '取消',
+      onOk: () => this.deleteItem(id)
+    });
+  }
+  deleteItem(id) {
+    request.deleteContentItem(id).then(() => {
+      this.getList(this.props.selectedNoteId)
+    })
+  }
   render() {
     let { contentList } = this.state
     let noteId = this.props.selectedNoteId
@@ -44,7 +58,7 @@ class ContentList extends Component {
                   description={item.brief}
                 />
                 <Link to={`/edit/${item.id}`}><Button type="primary">编辑</Button></Link>
-                <Button type="danger">删除</Button>
+                <Button type="danger" onClick={this.showDeleteItem.bind(this, item.id)}>删除</Button>
               </List.Item>
             )}
           ></List>
