@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/core": "7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.10.2",
@@ -120,6 +121,14 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ]
   },
   "devDependencies": {
