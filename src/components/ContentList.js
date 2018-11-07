@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './ContentList.less'
 import request from '../services/request'
-import { List, Icon, Upload, Button, Modal, message } from 'antd'
+import { List, Button, Modal } from 'antd'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -42,17 +42,6 @@ class ContentList extends Component {
     })
   }
   render() {
-    const props = {
-      name: 'file',
-      action: '//jsonplaceholder.typicode.com/posts/',
-      headers: {
-        authorization: 'authorization-text',
-      },
-      beforeUpload(file){
-        request.upload(file)
-        return false
-      }
-    }
     let { contentList } = this.state
     let noteId = this.props.selectedNoteId
     if(noteId) {
@@ -79,19 +68,14 @@ class ContentList extends Component {
       return (
         <div>
           <h1>Welcome, 请先选择一个笔记本</h1>
-          <Upload {...props}>
-            <Button>
-              <Icon type="upload" /> Click to Upload
-            </Button>
-          </Upload>
         </div>  
       )
     }
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ notelist }) => {
   return {
-    selectedNoteId: state.selectedNoteId
+    selectedNoteId: notelist.selectedNoteId
   }
 }
 export default connect(mapStateToProps)(ContentList)

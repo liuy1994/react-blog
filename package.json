@@ -62,6 +62,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.0.14",
     "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
