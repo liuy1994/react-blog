@@ -29,7 +29,6 @@ class AddForm extends Component {
     getDetail(){
         let { id } = this.props.match.params
         request.getContentDetail(id).then(data => {
-            console.log(data)
             this.setState({
                 name: data.name,
                 brief: data.brief,

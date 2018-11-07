@@ -41,11 +41,6 @@ class ContentList extends Component {
       this.getList(this.props.selectedNoteId)
     })
   }
-  test(){
-    request.getPolicy().then(data => {
-      console.log(data)
-    })
-  }
   render() {
     const props = {
       name: 'file',
