@@ -53,6 +53,7 @@ class ContentInput extends Component{
   inserImg(url){
     const range = this.quillRef.getEditor().getSelection()
     this.quillRef.getEditor().insertEmbed(range.index, 'image', url)
+    this.quillRef.getEditor().setSelection(range.index + 1)
   }
   handleChange(value) {
     this.setState({ text: value })
