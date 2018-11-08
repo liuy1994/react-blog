@@ -13,15 +13,25 @@ class SignUp extends Component {
     signup() {
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                request.signup(values)
+                request.signup(values).then(() => {
+                    window.location.href = '/#/list'
+                })
             }
         })
     }
-    checkName(event) {
-        let userName = event.target.value
-        request.checkName(userName).then(data => {
-            console.log(data)
-        })
+    checkName(rule, value, callback) {
+        if(!value) {
+            callback('Please input your username!')
+        } else {
+            request.checkName(value).then(data => {
+                if(data.uid) {
+                    callback('账号已存在')
+                } else{
+                    callback()
+                }
+            })
+        }
+        
     }
     validPassword(rule, value, callback) {
         let password = this.props.form.getFieldValue('password')
@@ -37,13 +47,13 @@ class SignUp extends Component {
     }
     formRules = {
         userName: [
-            { required: true, message: 'Please input your username!' }
+            { required: true, validator: this.checkName.bind(this) }
         ],
         password: [
             { required: true, message: 'Please input your password!' }
         ],
         rePass: [
-            { required: true, validator: this.validPassword.bind(this)}
+            { required: true, validator: this.validPassword.bind(this) }
         ]
     }
     render() {

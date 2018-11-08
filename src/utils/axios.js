@@ -1,6 +1,6 @@
 import axios from 'axios'
 const axiosInstance = axios.create({
-  baseURL: '/blog'
+  baseURL: 'http://47.52.234.164:9000'
 })
 
 

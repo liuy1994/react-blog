@@ -3,8 +3,6 @@ import { Button } from 'antd'
 import './About.less'
 import {docCookies} from '../utils'
 import request from '../services/request'
-import * as dom from 'react-router-dom'
-console.log(dom)
 class Main extends Component {
   logout() {
     request.logout().then(() => {

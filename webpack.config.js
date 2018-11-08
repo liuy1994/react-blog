@@ -35,12 +35,12 @@ module.exports = {
     hot: true,
     inline: true,
     contentBase: path.resolve('./public'),
-    proxy: {
-      "/blog": {
-        target: "http://localhost:8881",
-        pathRewrite: { "^/blog": "/" }
-      }
-    },
+    // proxy: {
+    //   "/blog": {
+    //     target: "http://47.52.234.164:9000",
+    //     pathRewrite: { "^/blog": "/" }
+    //   }
+    // },
     historyApiFallback: true
   },
   plugins: [
