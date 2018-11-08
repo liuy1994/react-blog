@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import request from '../services/request'
 import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
-import { Link } from 'react-router-dom'
 import store from '../redux/store'
 import { connect } from 'react-redux'
 const FormItem = Form.Item

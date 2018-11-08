@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import request from '../services/request'
 import { Form, Input, Button } from 'antd'
 import {docCookies} from '../utils'
+import { Link } from 'react-router-dom'
 import './login.less'
 const FormItem = Form.Item
 
@@ -34,7 +35,10 @@ class SignUp extends Component {
                         })(<Input placeholder="密码"></Input>)}
                     </FormItem>
                     <FormItem label="">
-                        <Button type="primary" onClick={this.login.bind(this)}>登陆</Button>
+                        <div className="buttons">
+                            <Button type="primary" onClick={this.login.bind(this)}>登陆</Button>
+                            <Link to="/sign/up">注册</Link>
+                        </div>
                     </FormItem>
                 </Form>
             </div>
