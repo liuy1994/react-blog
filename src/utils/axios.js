@@ -1,10 +1,10 @@
 import axios from 'axios'
-const axiosInstance = axios.create({
-  baseURL: 'http://47.52.234.164:9000'
-})
+// const axiosInstance = axios.create({
+//   baseURL: 'http://47.52.234.164:9000'
+// })
 
 
-axiosInstance.interceptors.request.use(
+axios.interceptors.request.use(
   config => {
     return config
   },
@@ -13,7 +13,7 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-axiosInstance.interceptors.response.use(
+axios.interceptors.response.use(
   response => {
     let res
     // IE9时response.data是undefined，因此需要使用response.request.responseText(Stringify后的字符串)
@@ -36,4 +36,4 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(err) // 返回接口返回的错误信息
   }
 )
-export default axiosInstance
+export default axios
