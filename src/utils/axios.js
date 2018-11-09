@@ -3,7 +3,6 @@ import axios from 'axios'
 //   baseURL: 'http://47.52.234.164:9000'
 // })
 
-
 axios.interceptors.request.use(
   config => {
     return config
