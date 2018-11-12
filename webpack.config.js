@@ -31,13 +31,13 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 9000,
+    port: 8888,
     hot: true,
     inline: true,
     contentBase: path.resolve('./public'),
     // proxy: {
-    //   "/blog": {
-    //     target: "http://47.52.234.164:9000",
+    //   "*": {
+    //     // target: "http://47.52.234.164:2333",
     //     pathRewrite: { "^/blog": "/" }
     //   }
     // },

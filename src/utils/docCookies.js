@@ -19,6 +19,9 @@ var docCookies = {
         default:
           sExpires = ";"
       }
+    } else {
+      var endDate = new Date(+new Date() + 24 * 60 * 60 * 1000)
+      sExpires = "; expires=" + endDate.toUTCString();
     }
     document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
     return true;
