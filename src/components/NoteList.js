@@ -4,6 +4,7 @@ import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
 import store from '../redux/store'
 import { connect } from 'react-redux'
+
 const FormItem = Form.Item
 const ListItem = List.Item
 class NoteList extends Component {
@@ -113,7 +114,7 @@ class NoteList extends Component {
 const WrappedNoteList = Form.create()(NoteList)
 const mapStateToProps = (state) => {
   return {
-    selectedNoteId: state.selectedNoteId
+    selectedNoteId: state.notelist.selectedNoteId
   }
 }
 export default connect(mapStateToProps)(WrappedNoteList)
