@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
 
 module.exports = {
   mode: 'development',
@@ -34,13 +34,14 @@ module.exports = {
     port: 8888,
     hot: true,
     inline: true,
-    contentBase: path.resolve('./public'),
-    // proxy: {
-    //   "*": {
-    //     // target: "http://47.52.234.164:2333",
-    //     pathRewrite: { "^/blog": "/" }
-    //   }
-    // },
+    contentBase: path.resolve(__dirname, './public'),
+    proxy: {
+      "*": {
+        target: "http://47.52.234.164:2333",
+        // pathRewrite: { "^/blog": "/" },
+        changeOrigin: true
+      }
+    },
     historyApiFallback: true
   },
   plugins: [
