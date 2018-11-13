@@ -19,7 +19,7 @@ const render = () => {
         </HashRouter>
       </PersistGate>
     </Provider>
-  ), document.getElementById('root'));
+  ), document.getElementById('root'))
 
 }
 store.subscribe(render)

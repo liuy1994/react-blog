@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import Upload from './Upload'
 import { Spin } from 'antd'
 import './ContentInput.less'
 import request from '../services/request';

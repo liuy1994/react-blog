@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
+const InterpolateHtmlPlugin = require('interpolate-html-plugin')
 
 module.exports = {
   mode: 'development',
@@ -10,7 +10,8 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    filename: 'bundle.js',
+    // filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve('/dist')
   },
   module: {
