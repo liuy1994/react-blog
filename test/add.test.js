@@ -9,6 +9,6 @@ describe('测试', () => {
       expect(x).to.be.not.ok
       done()
     }
-    setTimeout(f, 3000);
+    setTimeout(f, 1000);
   })
 })
