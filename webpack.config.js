@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InterpolateHtmlPlugin = require('interpolate-html-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   mode: 'development',
@@ -10,7 +11,7 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].bundle.js',
     path: path.resolve('/dist')
   },
   module: {
@@ -31,7 +32,7 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 8888,
+    port: 8890,
     hot: true,
     inline: true,
     contentBase: path.resolve(__dirname, './public'),
@@ -44,7 +45,13 @@ module.exports = {
     },
     historyApiFallback: true
   },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   }
+  // },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       template: './public/index.html'
