@@ -3,11 +3,11 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InterpolateHtmlPlugin = require('interpolate-html-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   entry: {
-    vendor: ['react'],
     app: './src/index.js'
   },
   output: {
@@ -51,6 +51,7 @@ module.exports = {
   //   }
   // },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
